@@ -8,12 +8,29 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>init :)</h2>
             <div class="col-12">
-                <h3>init :)</h3>
+                @if(count($posts) > 0)
+                    @foreach($posts as $post)
+                        <div class="card bg-light" style="margin-bottom: 20px;">
+                            <div class="card-header">
+                                <h4>{{ $post->title }}</h4>
+                                <small>Created: {{ $post->created_at }}</small>
+                            </div>
+                            <div class="card-body">
+                                <p style="margin-bottom: 0;">{{ $post->body  }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p>no posts :(</p>
+                @endif
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
